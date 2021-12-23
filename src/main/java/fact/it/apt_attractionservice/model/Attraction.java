@@ -29,4 +29,52 @@ public class Attraction {
     public Attraction() {
 
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMinHeight() {
+        return minHeight;
+    }
+
+    public void setMinHeight(int minHeight) {
+        this.minHeight = minHeight;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getThemeparkCode() {
+        return themeparkCode;
+    }
+
+    public void setThemeparkCode(String themeparkCode) {
+        this.themeparkCode = themeparkCode;
+    }
+
+    public String getAttractionCode() {
+        return attractionCode;
+    }
+
+    public void setAttractionCode(String attractionCode) {
+        this.attractionCode = attractionCode;
+    }
 }
