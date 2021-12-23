@@ -3,9 +3,8 @@ package fact.it.apt_attractionservice.controller;
 import fact.it.apt_attractionservice.model.Attraction;
 import fact.it.apt_attractionservice.repository.AttractionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -25,7 +24,7 @@ public class AttractionController {
     private AttractionRepository attractionRepository;
 
     @GetMapping("/attractions/{attractionCode}")
-    public Attraction getAttractionByAttactionCode(@PathVariable String attractionCode) {
+    public Attraction getAttractionByAttractionCode(@PathVariable String attractionCode) {
         return attractionRepository.findAttractionByAttractionCode(attractionCode);
     }
 
@@ -43,4 +42,36 @@ public class AttractionController {
     public List<Attraction> getAttractionsByTypeIdAndThemeparkCode(@PathVariable Integer typeId, @PathVariable String themeparkCode) {
         return attractionRepository.findAttractionsByTypeIdAndThemeparkCode(typeId, themeparkCode);
     }
+
+    @PostMapping("/attractions")
+    public Attraction addAttraction(@RequestBody Attraction attraction) {
+        attractionRepository.save(attraction);
+        return attraction;
+    }
+
+    @PutMapping("/attractions")
+    public Attraction updateAttraction(@RequestBody Attraction updatedAttraction) {
+        Attraction retrievedAttraction = attractionRepository.findAttractionByAttractionCode(updatedAttraction.getAttractionCode());
+
+        retrievedAttraction.setName(updatedAttraction.getName());
+        retrievedAttraction.setMinHeight(updatedAttraction.getMinHeight());
+        retrievedAttraction.setThemeparkCode(updatedAttraction.getThemeparkCode());
+        retrievedAttraction.setTypeId(updatedAttraction.getTypeId());
+
+        attractionRepository.save(retrievedAttraction);
+
+        return retrievedAttraction;
+    }
+
+    @DeleteMapping("/attractions")
+    public ResponseEntity deleteAttraction(@PathVariable String attractionCode) {
+        Attraction attraction = attractionRepository.findAttractionByAttractionCode(attractionCode);
+        if(attraction != null) {
+            attractionRepository.delete(attraction);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
