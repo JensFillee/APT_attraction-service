@@ -10,12 +10,15 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class AttractionController {
     // temporary method to fill DB with test data
     @PostConstruct
     public void fillDB() {
         if(attractionRepository.count() == 0) {
-            attractionRepository.save(new Attraction(1, "Typhoon", 125, 1, "BBJ", "I001"));
+            attractionRepository.save(new Attraction(1, "Typhoon", "Duistere krachten in Land of Legends wekten een eeuwige Typhoon op. Spring in de koets van de Skyriders, vlieg met hen mee en duik 25 meter het diepe in. Help jij heks Wayra in te tomen?", 125, 1, "BBJ", "A001"));
+            attractionRepository.save(new Attraction(2, "Indiana River", "Neem met de hele familie plaats in een boomstammetje en ontdek de jungle in Indiana River. Trotseer de vele bergen en dalen en bereid je voor om nat te worden!", 100, 2, "BBJ", "A002"));
+            attractionRepository.save(new Attraction(3, "Dalton Terror", "Nietsvermoedend 77 m kaarsrecht omhoog, genietend van de frisse lucht, van steil gesproken... Alles rondom jou wordt steeds kleiner", 120, 1, "WLB", "A003"));
         }
         System.out.println(attractionRepository.findAttractionByAttractionCode("I001").getName());
     }
@@ -23,7 +26,7 @@ public class AttractionController {
     @Autowired
     private AttractionRepository attractionRepository;
 
-    @GetMapping("/attractions/{attractionCode}")
+    @GetMapping("I{attractionCode}")
     public Attraction getAttractionByAttractionCode(@PathVariable String attractionCode) {
         return attractionRepository.findAttractionByAttractionCode(attractionCode);
     }
@@ -54,6 +57,7 @@ public class AttractionController {
         Attraction retrievedAttraction = attractionRepository.findAttractionByAttractionCode(updatedAttraction.getAttractionCode());
 
         retrievedAttraction.setName(updatedAttraction.getName());
+        retrievedAttraction.setDescription(updatedAttraction.getDescription());
         retrievedAttraction.setMinHeight(updatedAttraction.getMinHeight());
         retrievedAttraction.setThemeparkCode(updatedAttraction.getThemeparkCode());
         retrievedAttraction.setTypeId(updatedAttraction.getTypeId());
