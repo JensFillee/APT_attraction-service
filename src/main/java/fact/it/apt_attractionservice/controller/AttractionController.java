@@ -26,7 +26,7 @@ public class AttractionController {
     @Autowired
     private AttractionRepository attractionRepository;
 
-    @GetMapping("/attraction/{attractionCode}")
+    @GetMapping("/attractions/{attractionCode}")
     public Attraction getAttractionByAttractionCode(@PathVariable String attractionCode) {
         return attractionRepository.findAttractionByAttractionCode(attractionCode);
     }
