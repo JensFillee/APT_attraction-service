@@ -18,6 +18,7 @@ public class AttractionController {
         if(attractionRepository.count() == 0) {
             attractionRepository.save(new Attraction(1, "Typhoon", 125, 1, "BBJ", "I001"));
         }
+        System.out.println(attractionRepository.findAttractionByAttractionCode("I001").getName());
     }
 
     @Autowired
