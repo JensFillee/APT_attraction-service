@@ -31,6 +31,11 @@ public class AttractionController {
         return attractionRepository.findAttractionByAttractionCode(attractionCode);
     }
 
+    @GetMapping("/attractions/name/{name}/themepark/{themeparkCode}")
+    public List<Attraction> getAttractionsByNameAndThemeparkCode(@PathVariable String name, @PathVariable String themeparkCode) {
+        return attractionRepository.findAttractionsByThemeparkCodeEqualsAndNameContaining(name, themeparkCode);
+    }
+
     @GetMapping("/attractions/type/{typeId}")
     public List<Attraction> getAttractionsByTypeId(@PathVariable Integer typeId) {
         return  attractionRepository.findAttractionByTypeId(typeId);
