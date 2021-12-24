@@ -20,7 +20,7 @@ public class AttractionController {
             attractionRepository.save(new Attraction(2, "Indiana River", "Neem met de hele familie plaats in een boomstammetje en ontdek de jungle in Indiana River. Trotseer de vele bergen en dalen en bereid je voor om nat te worden!", 100, 2, "BBJ", "A002"));
             attractionRepository.save(new Attraction(3, "Dalton Terror", "Nietsvermoedend 77 m kaarsrecht omhoog, genietend van de frisse lucht, van steil gesproken... Alles rondom jou wordt steeds kleiner", 120, 1, "WLB", "A003"));
         }
-        System.out.println(attractionRepository.findAttractionByAttractionCode("I001").getName());
+        System.out.println(attractionRepository.findAttractionByAttractionCode("A001").getName());
     }
 
     @Autowired
@@ -67,7 +67,7 @@ public class AttractionController {
         return retrievedAttraction;
     }
 
-    @DeleteMapping("/attractions")
+    @DeleteMapping("/attractions/{attractionCode}")
     public ResponseEntity deleteAttraction(@PathVariable String attractionCode) {
         Attraction attraction = attractionRepository.findAttractionByAttractionCode(attractionCode);
         if(attraction != null) {
