@@ -20,6 +20,7 @@ public class AttractionController {
             attractionRepository.save(new Attraction(2, "Indiana River", "Neem met de hele familie plaats in een boomstammetje en ontdek de jungle in Indiana River. Trotseer de vele bergen en dalen en bereid je voor om nat te worden!", 100, 2, "156545", "A002"));
             attractionRepository.save(new Attraction(3, "Dalton Terror", "Nietsvermoedend 77 m kaarsrecht omhoog, genietend van de frisse lucht, van steil gesproken... Alles rondom jou wordt steeds kleiner", 120, 1, "156554", "A003"));
             attractionRepository.save(new Attraction(4, "Speedy Bob", "sneller dan snel", 120, 4, "156554", "A074"));
+            attractionRepository.save(new Attraction(5, "King Kong", "Overleef jij King Kong? ", 100, 5, "156554", "A075"));
         }
         System.out.println(attractionRepository.findAttractionByAttractionCode("A001").getName());
     }
