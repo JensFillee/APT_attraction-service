@@ -22,7 +22,6 @@ public class AttractionController {
             attractionRepository.save(new Attraction(4, "Speedy Bob", "sneller dan snel", 120, 4, "156554", "A074"));
             attractionRepository.save(new Attraction(5, "King Kong", "Overleef jij King Kong? ", 100, 5, "156554", "A075"));
         }
-        System.out.println(attractionRepository.findAttractionByAttractionCode("A001").getName());
     }
 
     @Autowired
