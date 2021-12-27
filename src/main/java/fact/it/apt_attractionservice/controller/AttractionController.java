@@ -19,6 +19,7 @@ public class AttractionController {
             attractionRepository.save(new Attraction(1, "Typhoon", "Duistere krachten in Land of Legends wekten een eeuwige Typhoon op. Spring in de koets van de Skyriders, vlieg met hen mee en duik 25 meter het diepe in. Help jij heks Wayra in te tomen?", 125, 1, "156545", "A001"));
             attractionRepository.save(new Attraction(2, "Indiana River", "Neem met de hele familie plaats in een boomstammetje en ontdek de jungle in Indiana River. Trotseer de vele bergen en dalen en bereid je voor om nat te worden!", 100, 2, "156545", "A002"));
             attractionRepository.save(new Attraction(3, "Dalton Terror", "Nietsvermoedend 77 m kaarsrecht omhoog, genietend van de frisse lucht, van steil gesproken... Alles rondom jou wordt steeds kleiner", 120, 1, "156554", "A003"));
+            attractionRepository.save(new Attraction(4, "Speedy Bob", "sneller dan snel", 120, 4, "156554", "A074"));
         }
         System.out.println(attractionRepository.findAttractionByAttractionCode("A001").getName());
     }
