@@ -22,7 +22,11 @@ jobs:
         
     - name: Start PostgreSQL
       uses: harmon758/postgresql-action@v1.0.0
-  
+      with:
+       postgresql db: ${{ secrets.POSTGRES_DB }}
+       postgresql user: ${{ secrets.POSTGRES_USER }}
+       postgresql password: ${{ secrets.POSTGRES_PASSWORD }}
+         
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:
