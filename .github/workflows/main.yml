@@ -21,9 +21,7 @@ jobs:
         cache: maven
         
     - name: Start PostgreSQL
-      uses: harmon758/postgresql-action@v1
-      with:
-       postgresql version: '11'  
+      uses: harmon758/postgresql-action@v1.0.0
   
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
@@ -49,7 +47,7 @@ jobs:
       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       
     - name: Docker build
-      run: docker build -t ${{ secrets.DOCKER_USER }}/apt_attraction-service:latest .
+      run: docker build -t ${{ secrets.DOCKER_USER }}/apt-attraction-service:latest .
     
     - name: Upload container to docker Hub with Push
-      run: docker push ${{ secrets.DOCKER_USER }}/apt_attraction-service:latest
+      run: docker push ${{ secrets.DOCKER_USER }}/apt-attraction-service:latest
