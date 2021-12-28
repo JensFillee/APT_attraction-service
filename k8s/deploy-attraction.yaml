@@ -40,6 +40,8 @@ spec:
           value: "postgres"
         - name: POSTGRES_PASSWORD 
           value: "abc123"           # Read environment variables from kubernetes secrets
+        - name: POSTGRES_DB
+          value: "attractions-postgresql"
         ports:
         - containerPort: 5432       # The port that the container exposes       
           name: postgres
