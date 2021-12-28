@@ -36,6 +36,8 @@ spec:
       - image: postgres                # The container image
         name: postgres
         env:                        # Environment variables passed to the container 
+        - name: POSTGRES_USER
+          value: "postgres"
         - name: POSTGRES_PASSWORD 
           value: "abc123"           # Read environment variables from kubernetes secrets
         ports:
