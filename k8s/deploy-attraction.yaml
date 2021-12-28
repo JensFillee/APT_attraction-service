@@ -70,11 +70,11 @@ spec:
             cpu: 0.2
             memory: "200Mi"
         env:                    # Environment variables supplied to the Pod
-        - name: POSTGRES_DB_USERNAME 
+        - name: POSTGRES_USER
           value: "postgres"
-        - name: POSTGRES_DB_PASSWORD
+        - name: POSTGRES_PASSWORD
           value: "abc123"
-        - name: POSTGRES_DB_HOST
+        - name: POSTGRES_DB
           value: "attraction-service-postgresql"
 ---
 apiVersion: v1                      # API version
