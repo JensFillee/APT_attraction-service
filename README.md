@@ -1,3 +1,3 @@
 # APT_attraction-service
 
-MariaDB
+PostgreSQL
