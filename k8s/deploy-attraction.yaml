@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
     - port: 3306
-  selector:                       # Selects any Pod with labels `app=book-info-service,tier=mysql`
+  selector:                       # Selects any Pod with labels `app=attraction-service,tier=mysql`
     app: attraction-service
     tier: postgres
   clusterIP: None
@@ -88,9 +88,9 @@ metadata:
   labels:                           # Labels that will be applied to this service
     app: attraction-service-server
 spec:                         
-  type: NodePort                    # The service will be exposed by opening a Port on each node and proxying it. Allowing connections from outside the cluster 
+  type: ClusterIP                    # Don't allow connections from outside the cluster 
   selector:
-    app: attraction-service-server   # The service exposes Pods with label `app=book-info-service-server`
+    app: attraction-service-server   # The service exposes Pods with label `app=attraction-service-server`
   ports:                            # Forward incoming connections on port 8080 to the target port 8051
   - name: http
     port: 8051
